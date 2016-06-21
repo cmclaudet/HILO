@@ -1,5 +1,5 @@
 // hilo2.cpp : Defines the entry point for the console application.
-//
+// Console application game in which the user guesses a number between 1 and 100.
 
 #include "stdafx.h"
 #include <iostream>
@@ -8,6 +8,7 @@
 
 void repeat(int x);
 
+// Finds random number between min and max
 unsigned int getRandomNumber(int min, int max)
 {
 	static const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0); // static used for efficiency, so we only calculate this value once
@@ -15,6 +16,7 @@ unsigned int getRandomNumber(int min, int max)
 	return static_cast<int>(rand() * fraction * (max - min + 1) + min);
 }
 
+// Tests the user's guess and gives them feedback
 bool hilo(int random, int n)
 {
 	std::cout << "Guess #" << n << ": ";
@@ -38,6 +40,7 @@ bool hilo(int random, int n)
 	}
 }
 
+// Asks use if they would like to play again
 void again(int random)
 {
 	std::cout << "Would you like to play again? (y/n) ";
@@ -56,6 +59,7 @@ void again(int random)
 	}
 }
 
+// Repeats the game if the user so chooses after a game is finished
 void repeat(int random)
 {
 	std::cout << "Let's play a game. I'm thinking of an integer between 1 and 100. You have 7 tries to guess what it is." << '\n';
